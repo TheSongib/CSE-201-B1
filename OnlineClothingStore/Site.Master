@@ -54,6 +54,9 @@
                         <li><a runat="server" href="~/Buy">Buy</a></li>
                         <li><a runat="server" href="~/Sell">Sell</a></li>
                     </ul>
+                    <ul class="nav navbar-nav" style="float:right;">
+                        <li><a runat="server" href="~/CreateAccount">Create Account</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -63,7 +66,7 @@
             <hr />
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - Clothing Store</p>
-                <p> By Brandon Gibson, Ryan Cavanough, Nhi Nguyen, Nhan Nguyen, Ryan Wilcox, and Michael Glum</p>
+                <p> By Brandon Gibson, Ryan Cavanough, Nhi Nguyen, Nhan Nguyen, Michael Glum, and Ryan Wilcox</p>
             </footer>
         </div>
 
