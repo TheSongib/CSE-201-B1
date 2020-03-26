@@ -11,7 +11,7 @@ namespace OnlineClothingStore
 {
 
 
-    public partial class About
+    public partial class Buy
     {
     }
 }

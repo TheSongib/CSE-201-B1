@@ -25,7 +25,7 @@ namespace OnlineClothingStore
 {
     
 
-    public partial class Sell : Page
+    public partial class CreateAccount : Page
     {
         //sql database connection
         SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\RyanC\Downloads\CSE-201-B1-master\CSE-201-B1-master\OnlineClothingStore\App_Data\Store.mdf;Integrated Security=True");
