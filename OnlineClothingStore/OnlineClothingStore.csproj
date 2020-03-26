@@ -105,6 +105,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Store.mdf" />
+    <Content Include="App_Data\Store_log.ldf">
+      <DependentUpon>Store.mdf</DependentUpon>
+    </Content>
     <Content Include="Buy.aspx" />
     <Content Include="Sell.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -209,9 +213,7 @@
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
