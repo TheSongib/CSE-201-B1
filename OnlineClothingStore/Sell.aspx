@@ -1,15 +1,15 @@
 ﻿<%@ Page Title="Sell" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Sell.aspx.cs" Inherits="OnlineClothingStore.Contact" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2><%: Title %></h2>
+    <h2>Sell</h2>
     <h3>Put an item for sale here: </h3>
     <div class="row">
         <div class="col-lg">
             <div class="form-group">
                 <label for="userId">Name</label>
-                <input type="text" class="form-control" id="userId" name="uid">
+                <asp:TextBox id="userId" runat="server"></asp:TextBox>
                 <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email" name="email">
+                <asp:TextBox id="email" runat="server"></asp:TextBox>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
     </div>
 
     <div class="form-group">
-        <input type="submit" id="submit" name="submit">
+        <asp:Button id="submit" Text="submit" runat="server" OnClick="Submit_Click"></asp:Button>
     </div>
 
 </asp:Content>

@@ -71,3 +71,6 @@ D:\Users\owner\Documents\VS2019\OnlineClothingStore\OnlineClothingStore\obj\Debu
 D:\Users\owner\Documents\VS2019\OnlineClothingStore\OnlineClothingStore\obj\Debug\OnlineClothingStore.csproj.CopyComplete
 D:\Users\owner\Documents\VS2019\OnlineClothingStore\OnlineClothingStore\obj\Debug\OnlineClothingStore.dll
 D:\Users\owner\Documents\VS2019\OnlineClothingStore\OnlineClothingStore\obj\Debug\OnlineClothingStore.pdb
+C:\Users\RyanC\Downloads\CSE-201-B1-master\CSE-201-B1-master\OnlineClothingStore\obj\Debug\OnlineClothingStore.csprojAssemblyReference.cache
+C:\Users\RyanC\Downloads\CSE-201-B1-master\CSE-201-B1-master\OnlineClothingStore\obj\Debug\OnlineClothingStore.dll
+C:\Users\RyanC\Downloads\CSE-201-B1-master\CSE-201-B1-master\OnlineClothingStore\obj\Debug\OnlineClothingStore.pdb
