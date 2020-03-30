@@ -3,15 +3,39 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2>Sell</h2>
     <h3>Create Account: </h3>
+
     <div class="row">
         <div class="col-lg">
             <div class="form-group">
                 <label for="userId">First Name: </label>
                 <asp:TextBox id="firstName" runat="server"></asp:TextBox>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg">
+            <div class="form-group">
                 <label for="userId">Last Name: </label>
                 <asp:TextBox id="lastName" runat="server"></asp:TextBox>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg">
+            <div class="form-group">
                 <label for="email">Email address</label>
                 <asp:TextBox id="email" runat="server"></asp:TextBox>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg">
+            <div class="form-group">
+                <label for="email">Password: </label>
+                <asp:TextBox id="password" runat="server" TextMode="Password"></asp:TextBox>
             </div>
         </div>
     </div>
