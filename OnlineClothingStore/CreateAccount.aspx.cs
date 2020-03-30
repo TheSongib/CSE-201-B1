@@ -43,7 +43,7 @@ namespace OnlineClothingStore
         protected void Submit_Click(object sender, EventArgs e)
         {
             //You will need to change the SqlConntion to the appropriate filepath
-            con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\Users\\owner\\Documents\\VS2019\\OnlineClothingStore\\OnlineClothingStore\\App_Data\\Store.mdf;Integrated Security=True");
+            con = new SqlConnection(ConfigurationManager.ConnectionStrings["BrandonConnection"].ConnectionString);
             cmd = new SqlCommand("spCreateAccount", con);
             cmd.Parameters.Add("@firstName", SqlDbType.VarChar).Value = firstName.Text;
             cmd.Parameters.Add("@lastName", SqlDbType.VarChar).Value = lastName.Text;
