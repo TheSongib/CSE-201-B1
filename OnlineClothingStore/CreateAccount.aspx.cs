@@ -31,10 +31,6 @@ namespace OnlineClothingStore
         SqlConnection con;
         //Here we declare the parameter which we have to use in our application  
         SqlCommand cmd = new SqlCommand();
-        SqlParameter sp1 = new SqlParameter();
-        SqlParameter sp2 = new SqlParameter();
-        SqlParameter sp3 = new SqlParameter();
-        SqlParameter sp4 = new SqlParameter();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -55,7 +51,15 @@ namespace OnlineClothingStore
             cmd.CommandType = CommandType.StoredProcedure;
             con.Open();
             cmd.ExecuteNonQuery();
-            bool retunvalue = (bool)cmd.Parameters["@success"].Value;
+            bool success = (bool)cmd.Parameters["@success"].Value;
+            if (success)
+            {
+                Response.Redirect("Default.aspx");
+            }
+            else
+            {
+                existingAccount.Text = "Account already exists!";
+            }
             con.Close();
         }
     }
