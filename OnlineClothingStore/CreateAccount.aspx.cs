@@ -39,7 +39,7 @@ namespace OnlineClothingStore
         protected void Submit_Click(object sender, EventArgs e)
         {
             //You will need to change the SqlConntion to the appropriate filepath
-            con = new SqlConnection(ConfigurationManager.ConnectionStrings["BrandonConnection"].ConnectionString);
+            con = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection"].ConnectionString);
             cmd = new SqlCommand("spCreateAccount", con);
             cmd.Parameters.Add("@firstName", SqlDbType.VarChar).Value = firstName.Text;
             cmd.Parameters.Add("@lastName", SqlDbType.VarChar).Value = lastName.Text;
@@ -59,6 +59,30 @@ namespace OnlineClothingStore
             else
             {
                 existingAccount.Text = "Account already exists!";
+            }
+            con.Close();
+        }
+
+        protected void Login_Click(object sender, EventArgs e)
+        {
+            //You will need to change the SqlConntion to the appropriate filepath
+            con = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection"].ConnectionString);
+            cmd = new SqlCommand("spValidateLogin", con);
+            cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = email.Text;
+            cmd.Parameters.Add("@password", SqlDbType.VarChar).Value = password.Text;
+            SqlParameter retval = cmd.Parameters.Add("@success", SqlDbType.Bit);
+            retval.Direction = ParameterDirection.Output;
+            cmd.CommandType = CommandType.StoredProcedure;
+            con.Open();
+            cmd.ExecuteNonQuery();
+            bool success = (bool)cmd.Parameters["@success"].Value;
+            if (success)
+            {
+                Response.Redirect("Default.aspx");
+            }
+            else
+            {
+                noMatch.Text = "No account exists with those credentials!";
             }
             con.Close();
         }

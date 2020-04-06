@@ -39,7 +39,7 @@ namespace OnlineClothingStore
         protected void Submit_Click(object sender, EventArgs e)
         {
             //You will need to change the SqlConntion to the appropriate filepath
-            con = new SqlConnection(ConfigurationManager.ConnectionStrings["RyanConnection"].ConnectionString);
+            con = new SqlConnection(ConfigurationManager.ConnectionStrings["BrandonConnection"].ConnectionString);
             cmd = new SqlCommand("spAddListing", con);
             cmd.Parameters.Add("@userId", SqlDbType.Int).Value = userId.Text;
             cmd.Parameters.Add("@title", SqlDbType.VarChar).Value = listingTitle.Text;

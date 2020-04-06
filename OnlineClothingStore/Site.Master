@@ -55,7 +55,7 @@
                         <li><a runat="server" href="~/Sell">Sell</a></li>
                     </ul>
                     <ul class="nav navbar-nav" style="float:right;">
-                        <li><a runat="server" href="~/CreateAccount">Create Account</a></li>
+                        <li><a runat="server" href="~/CreateAccount">Create Account/Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -64,7 +64,7 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-            <footer>
+            <footer style="position:absolute;bottom:0;">
                 <p>&copy; <%: DateTime.Now.Year %> - Clothing Store</p>
                 <p> By Brandon Gibson, Ryan Cavanough, Nhi Nguyen, Nhan Nguyen, Michael Glum, and Ryan Wilcox</p>
             </footer>
