@@ -20,6 +20,7 @@ using System.Web.Script.Services;
 using System.Web.Services;
 using System.Xml;
 using System.Xml.Serialization;
+using System.Web.Security;
 
 namespace OnlineClothingStore
 {
@@ -54,7 +55,19 @@ namespace OnlineClothingStore
             bool success = (bool)cmd.Parameters["@success"].Value;
             if (success)
             {
-                Response.Redirect("Default.aspx");
+                string query = "SELECT userId, firstName, lastName, address FROM tblUsers WHERE email LIKE '" + email.Text + "';";
+                System.Diagnostics.Debug.WriteLine(query);
+                SqlCommand variableQuery = new SqlCommand(query, con);
+                SqlDataReader reader = variableQuery.ExecuteReader();
+                while (reader.Read())
+                {
+                    Session["userId"] = reader[0];
+                    Session["email"] = email.Text;
+                    Session["firstName"] = reader[1];
+                    Session["lastName"] = reader[2];
+                    Session["Address"] = reader[3];
+                }
+                FormsAuthentication.RedirectFromLoginPage(email.Text, false);
             }
             else
             {
@@ -65,26 +78,7 @@ namespace OnlineClothingStore
 
         protected void Login_Click(object sender, EventArgs e)
         {
-            //You will need to change the SqlConntion to the appropriate filepath
-            con = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection"].ConnectionString);
-            cmd = new SqlCommand("spValidateLogin", con);
-            cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = email.Text;
-            cmd.Parameters.Add("@password", SqlDbType.VarChar).Value = password.Text;
-            SqlParameter retval = cmd.Parameters.Add("@success", SqlDbType.Bit);
-            retval.Direction = ParameterDirection.Output;
-            cmd.CommandType = CommandType.StoredProcedure;
-            con.Open();
-            cmd.ExecuteNonQuery();
-            bool success = (bool)cmd.Parameters["@success"].Value;
-            if (success)
-            {
-                Response.Redirect("Default.aspx");
-            }
-            else
-            {
-                noMatch.Text = "No account exists with those credentials!";
-            }
-            con.Close();
+            Response.Redirect("Login.aspx");
         }
     }
 

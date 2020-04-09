@@ -22,10 +22,19 @@ namespace OnlineClothingStore
 {
     public partial class SiteMaster : MasterPage
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\RyanC\Downloads\CSE-201-B1-master\CSE-201-B1-master\OnlineClothingStore\App_Data\Store.mdf;Integrated Security=True");
+        
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["email"] == null)
+            {
+                account.InnerHtml = "Create Account/Login";
 
+            }
+            else
+            {
+                account.InnerHtml = (string) Session["firstName"];
+                account.HRef = "~/AccountInfo";
+            }
         }
     }
 }

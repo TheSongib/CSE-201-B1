@@ -41,9 +41,9 @@ namespace OnlineClothingStore
             //You will need to change the SqlConntion to the appropriate filepath
             con = new SqlConnection(ConfigurationManager.ConnectionStrings["BrandonConnection"].ConnectionString);
             cmd = new SqlCommand("spAddListing", con);
-            cmd.Parameters.Add("@userId", SqlDbType.Int).Value = userId.Text;
+            cmd.Parameters.Add("@userId", SqlDbType.Int).Value = Session["userId"];
             cmd.Parameters.Add("@title", SqlDbType.VarChar).Value = listingTitle.Text;
-            cmd.Parameters.Add("@price", SqlDbType.Int).Value = Price.Text;
+            cmd.Parameters.Add("@price", SqlDbType.Int).Value = int.Parse(Price.Text);
             cmd.Parameters.Add("@category", SqlDbType.VarChar).Value = Category.Text;
             cmd.Parameters.Add("@description", SqlDbType.VarChar).Value = Description.Text;
             SqlParameter retval = cmd.Parameters.Add("@success", SqlDbType.VarChar);
