@@ -39,7 +39,7 @@ namespace OnlineClothingStore
 
         protected void Login_Click(object sender, EventArgs e)
         {
-            //You will need to change the SqlConntion to the appropriate filepath
+            //establish connect to stored procedure and execute
             con = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection"].ConnectionString);
             cmd = new SqlCommand("spValidateLogin", con);
             cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = loginEmail.Text;
@@ -50,18 +50,22 @@ namespace OnlineClothingStore
             con.Open();
             cmd.ExecuteNonQuery();
             bool success = (bool)cmd.Parameters["@success"].Value;
+
+            //if successful set session variables, if not display account already exists
             if (success)
             {
-                string query = "SELECT userId, firstName, lastName, address FROM tblUsers WHERE email LIKE '" + loginEmail.Text + "';";
-                System.Diagnostics.Debug.WriteLine(query);
+                //do query to get user information
+                string query = "SELECT userId, firstName, lastName, address, admin FROM tblUsers WHERE email LIKE '" + loginEmail.Text + "';";
                 SqlCommand variableQuery = new SqlCommand(query, con);
                 SqlDataReader reader = variableQuery.ExecuteReader();
                 while (reader.Read()) {
+                    //Set session variables from query to be accessed on all pages
                     Session["userId"] = reader[0];
                     Session["email"] = loginEmail.Text;
                     Session["firstName"] = reader[1];
                     Session["lastName"] = reader[2];
                     Session["Address"] = reader[3];
+                    Session["admin"] = (bool)reader[4];
                 }
                 FormsAuthentication.RedirectFromLoginPage(loginEmail.Text, false);
             }

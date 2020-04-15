@@ -33,9 +33,43 @@ namespace OnlineClothingStore
         SqlCommand cmd = new SqlCommand();
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Display user data from session variables
+            adminStuff.Visible = false;
             nameInfo.InnerText = Session["firstName"] + " " + Session["lastName"];
             emailInfo.InnerText = "" + Session["email"];
             addressInfo.InnerText = "" + Session["address"];
+
+            //If user is an admin, display promote to admin text area
+            if ((bool)Session["admin"])
+            {
+                adminStuff.Visible = true;
+            }
+        }
+
+        protected void Promote_Click(object sender, EventArgs e)
+        {
+            //Establish connection to stored procedure and add parameteres
+            con = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection"].ConnectionString);
+            cmd = new SqlCommand("spPromoteToAdmin", con);
+            cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = promote.Text;
+            SqlParameter retVal = cmd.Parameters.Add("@success", SqlDbType.Bit);
+            retVal.Direction = ParameterDirection.Output;
+
+            //Execute and get return value
+            cmd.CommandType = CommandType.StoredProcedure;
+            con.Open();
+            cmd.ExecuteNonQuery();
+            bool success = (bool)cmd.Parameters["@success"].Value;
+
+            //Determine if successful and display message accordingly
+            if (success)
+            {
+                passOrFail.Text = "Successfully promoted to admin!";
+            }
+            else
+            {
+                passOrFail.Text = "Failed: Either user does not exist or is already admin!";
+            }
         }
     }
 

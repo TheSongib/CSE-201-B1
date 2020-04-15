@@ -10,7 +10,7 @@
                     <h3>Create Account</h3>
                     <label for="userId">First Name: </label>
                     <br />
-                    <asp:TextBox id="firstName" runat="server" class="form-control input-m" required="required"></asp:TextBox>
+                    <asp:TextBox id="firstName" runat="server" class="form-control input-m"></asp:TextBox>
                 </div>
             </div>
         </div>
@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <label for="userId">Last Name: </label>
                     <br />
-                    <asp:TextBox id="lastName" runat="server" class="form-control input-m" required="required"></asp:TextBox>
+                    <asp:TextBox id="lastName" runat="server" class="form-control input-m"></asp:TextBox>
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
                 <div class="form-group">
                     <label for="email">Email address</label>
                     <br />
-                    <asp:TextBox id="email" runat="server" class="form-control input-m" required="required"></asp:TextBox>
+                    <asp:TextBox id="email" runat="server" class="form-control input-m"></asp:TextBox>
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
                 <div class="form-group">
                     <label for="title">Password: </label>
                     <br />
-                    <asp:TextBox id="password" runat="server" TextMode="Password" class="form-control input-m" required="required"></asp:TextBox>
+                    <asp:TextBox id="password" runat="server" TextMode="Password" class="form-control input-m"></asp:TextBox>
                 </div>
             </div>
         </div>
@@ -48,7 +48,7 @@
                 <div class="form-group">
                     <label for="title">Address: </label>
                     <br />
-                    <asp:TextBox id="address" runat="server" class="form-control input-m" required="required"></asp:TextBox>
+                    <asp:TextBox id="address" runat="server" class="form-control input-m"></asp:TextBox>
                 </div>
             </div>
         </div>

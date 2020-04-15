@@ -29,7 +29,13 @@
         <div class="col-lg">
             <div class="form-group">
                 <label for="category">Category: </label>
-                <asp:TextBox id="Category" runat="server" class="form-control input-m" required="required"></asp:TextBox>
+                <asp:DropDownList id="Category" runat="server" class="form-control input-m" required="required">
+                    <asp:ListItem Text="Clothing" Value="1"></asp:ListItem>
+                    <asp:ListItem Text="Technology" Value="2"></asp:ListItem>
+                    <asp:ListItem Text="Furniture" Value="3"></asp:ListItem>
+                    <asp:ListItem Text="Outdoor Item" Value="4"></asp:ListItem>
+                    <asp:ListItem Text="Other" Value="5"></asp:ListItem>
+                </asp:DropDownList>
             </div>
         </div>
     </div>
@@ -46,6 +52,10 @@
         <div class="col-lg">
             <div class="form-group">
                 <label for="image"> Drag images here: </label>
+                <div class="form-group" id="dropzone" style="border:dashed 4px gray; width:100px; height:100px;">
+                    
+                </div>
+                <div id="uploads"></div>
             </div>
         </div>
     </div>
@@ -53,6 +63,18 @@
     <div class="form-group">
         <asp:Button id="submit" Text="Submit" runat="server" OnClick="Submit_Click" class="btn btn-primary btn-lg" style="margin-left:85px"></asp:Button>
     </div>
+
+    <script>
+        (function () {
+            var dropzone = document.getElementById('dropzone');
+
+            dropzone.ondrop = function () {
+                event.preventDefault()
+                console.log(event);
+                upload();
+            };
+        });
+    </script>
 
 </asp:Content>
 
