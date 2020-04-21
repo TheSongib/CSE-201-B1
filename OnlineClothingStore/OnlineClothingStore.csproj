@@ -245,7 +245,9 @@
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Content\Images\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />

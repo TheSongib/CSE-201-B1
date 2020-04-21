@@ -12,6 +12,24 @@
     <div class="row">
         <div class="col-lg">
             <div class="form-group">
+                <label for="image"> Select Image Files (Up to 5): </label>
+                    <asp:FileUpload ID= "image1" runat = "server" />
+                    <asp:RegularExpressionValidator id="image1Validator" text="Not a valid image file (*.png, *.jpg, or *.jpeg)" errormessage="Not a valid image file (*.png, *.jpg, or *.jpeg)" ControlToValidate="image1" ValidationExpression="^.*\.(png|PNG|jpg|JPG|JPEG|jpeg)$" runat="server" />
+                    <asp:FileUpload ID= "image2" runat = "server" />
+                    <asp:RegularExpressionValidator id="image2Validator" text="Not a valid image file (*.png, *.jpg, or *.jpeg)" errormessage="Not a valid image file (*.png, *.jpg, or *.jpeg)" ControlToValidate="image2" ValidationExpression="^.*\.(png|PNG|jpg|JPG|JPEG|jpeg)$" runat="server" />
+                    <asp:FileUpload ID= "image3" runat = "server" />
+                    <asp:RegularExpressionValidator id="image3Validator" text="Not a valid image file (*.png, *.jpg, or *.jpeg)" errormessage="Not a valid image file (*.png, *.jpg, or *.jpeg)" ControlToValidate="image3" ValidationExpression="^.*\.(png|PNG|jpg|JPG|JPEG|jpeg)$" runat="server" />
+                    <asp:FileUpload ID= "image4" runat = "server" />
+                    <asp:RegularExpressionValidator id="image4Validator" text="Not a valid image file (*.png, *.jpg, or *.jpeg)" errormessage="Not a valid image file (*.png, *.jpg, or *.jpeg)" ControlToValidate="image4" ValidationExpression="^.*\.(png|PNG|jpg|JPG|JPEG|jpeg)$" runat="server" />
+                    <asp:FileUpload ID= "image5" runat = "server" />
+                    <asp:RegularExpressionValidator id="iamge5Validator" text="Not a valid image file (*.png, *.jpg, or *.jpeg)" errormessage="Not a valid image file (*.png, *.jpg, or *.jpeg)" ControlToValidate="image5" ValidationExpression="^.*\.(png|PNG|jpg|JPG|JPEG|jpeg)$" runat="server" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg">
+            <div class="form-group">
                 <label for="title">Title: </label>
                 <asp:TextBox id="listingTitle" runat="server" class="form-control input-m" required="required"></asp:TextBox>
             </div>
@@ -48,17 +66,7 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-lg">
-            <div class="form-group">
-                <label for="image"> Drag images here: </label>
-                <div class="form-group" id="dropzone" style="border:dashed 4px gray; width:100px; height:100px;">
-                    
-                </div>
-                <div id="uploads"></div>
-            </div>
-        </div>
-    </div>
+    
 
     <div class="form-group">
         <asp:Button id="submit" Text="Submit" runat="server" OnClick="Submit_Click" class="btn btn-primary btn-lg" style="margin-left:85px"></asp:Button>
