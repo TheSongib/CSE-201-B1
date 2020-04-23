@@ -9,6 +9,10 @@
         </div>
     </div>
 
+    <div class="form-group">
+        <asp:Label id="Error" Text="" style="color:Red;" runat="server"/>
+    </div>
+
     <div class="row">
         <div class="col-lg">
             <div class="form-group">
@@ -71,18 +75,6 @@
     <div class="form-group">
         <asp:Button id="submit" Text="Submit" runat="server" OnClick="Submit_Click" class="btn btn-primary btn-lg" style="margin-left:85px"></asp:Button>
     </div>
-
-    <script>
-        (function () {
-            var dropzone = document.getElementById('dropzone');
-
-            dropzone.ondrop = function () {
-                event.preventDefault()
-                console.log(event);
-                upload();
-            };
-        });
-    </script>
 
 </asp:Content>
 

@@ -7,6 +7,16 @@
     </div>
 
     <div id="review" runat="server">
+
+        <div style="width:100%;float:left">
+            <h2>Images: </h2>
+            <asp:Literal id="img1" runat="server" />
+            <asp:Literal id="img2" runat="server" />
+            <asp:Literal id="img3" runat="server" />
+            <asp:Literal id="img4" runat="server" />
+            <asp:Literal id="img5" runat="server" />
+        </div>
+
         <div style="width:50%;float:left">
             <h2>Title: </h2>
             <p id="title" runat="server" contenteditable="true"></p>

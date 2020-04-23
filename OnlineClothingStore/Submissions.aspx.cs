@@ -39,7 +39,8 @@ namespace OnlineClothingStore
             review.Visible = true;
             finished.Visible = false;
 
-            //Create connection to stored procedure and execute
+
+            //Create connection to stored procedure for listings and execute
             con = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection"].ConnectionString);
             cmd = new SqlCommand("spGetSubmission", con);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -65,6 +66,45 @@ namespace OnlineClothingStore
                         description.InnerText = (string)reader[6];
                     }
                 }
+
+                reader.Close();
+
+                //run stored provedur for getting 
+                SqlCommand imgCmd = new SqlCommand("spGetImages", con);
+                imgCmd.Parameters.Add("@listingId", SqlDbType.VarChar).Value = listingId;
+                imgCmd.CommandType = CommandType.StoredProcedure;
+                SqlDataReader imgReader = imgCmd.ExecuteReader();
+                if (imgReader.HasRows)
+                {
+                    //read data
+                    if (imgReader.Read())
+                    {
+                        string path = "Content\\Images\\" + imgReader[0] + "\\" + imgReader[1] + "\\" + imgReader[2];
+                        System.Diagnostics.Debug.WriteLine("<img src=" + '"' + path + '"' + "style=" + '"' + "width: 19 %" + '"' + "/>");
+                        img1.Text += "<img src=" + '"' + path + '"' + "style=" + '"' + "width: 19%;margin-right:2px;" + '"' + "/>";
+                    }
+                    if (imgReader.Read())
+                    {
+                        string path = Server.MapPath("\\Content\\Images\\") + imgReader[0] + "\\" + imgReader[1] + "\\" + imgReader[2];
+                        img2.Text += "<img src=" + '"' + path + '"' + "style=" + '"' + "width: 19%;margin-right:2px;" + '"' + "/>";
+                    }
+                    if (imgReader.Read())
+                    {
+                        string path = Server.MapPath("\\Content\\Images\\") + imgReader[0] + "\\" + imgReader[1] + "\\" + imgReader[2];
+                        img3.Text += "<img src=" + '"' + path + '"' + "style=" + '"' + "width: 19%;margin-right:2px;" + '"' + "/>";
+                    }
+                    if (imgReader.Read())
+                    {
+                        string path = Server.MapPath("\\Content\\Images\\") + imgReader[0] + "\\" + imgReader[1] + "\\" + imgReader[2];
+                        img4.Text += "<img src=" + '"' + path + '"' + "style=" + '"' + "width: 19%;margin-right:2px;" + '"' + "/>";
+                    }
+                    if (imgReader.Read())
+                    {
+                        string path = Server.MapPath("\\Content\\Images\\") + imgReader[0] + "\\" + imgReader[1] + "\\" + imgReader[2];
+                        img5.Text += "<img src=" + '"' + path + '"' + "style=" + '"' + "width: 19%;" + '"' + "/>";
+                    }
+                }
+                imgReader.Close();
             }
             else
             {

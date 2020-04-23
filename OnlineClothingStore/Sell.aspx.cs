@@ -41,10 +41,12 @@ namespace OnlineClothingStore
             //Dont let user make listing if user is not logged in
             if (Session["userId"] == null)
             {
-                //put code here to display error message if user is not logged in
+                //Display error message if user is not logged in
+                Error.Text = "ERROR: Not Logged In";
             }
             else
             {
+                Error.Text = "";
                 //establish connect to stored procedure and execute
                 con = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection"].ConnectionString);
                 cmd = new SqlCommand("spAddListing", con);
@@ -70,16 +72,71 @@ namespace OnlineClothingStore
                 //Check if listng was created
                 if (returnvalue == 0)
                 {
-                    //Put error code to display message for duplicate listing here
+                    //Display message for duplicate listing here
+                    Error.Text = "ERROR: Duplicate Item";
                 }
                 else
                 {
-                    path = path + "/" + returnvalue.ToString();
+                    path = path + "/" + returnvalue.ToString() + "/";
                     Directory.CreateDirectory(path);
 
                     //Make sure image file names have no spaces
-
-                    //put code in here to to get images from file uploader and upload them to the folder
+                    if (image1.HasFile)
+                    {
+                        image1.PostedFile.SaveAs(path + image1.FileName.Replace(' ', '_'));
+                        cmd = new SqlCommand("spAddRemoveImages", con);
+                        cmd.Parameters.Add("@imageId", SqlDbType.Int).Value = 0;
+                        cmd.Parameters.Add("@listingId", SqlDbType.Int).Value = returnvalue;
+                        cmd.Parameters.Add("@imageName", SqlDbType.VarChar, 50).Value = image1.FileName.Replace(' ', '_');
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.ExecuteNonQuery();
+                    }
+                        
+                    if (image2.HasFile)
+                    {
+                        image2.PostedFile.SaveAs(path + image2.FileName.Replace(' ', '_'));
+                        cmd = new SqlCommand("spAddRemoveImages", con);
+                        cmd.Parameters.Add("@imageId", SqlDbType.Int).Value = 0;
+                        cmd.Parameters.Add("@listingId", SqlDbType.Int).Value = returnvalue;
+                        cmd.Parameters.Add("@imageName", SqlDbType.VarChar, 50).Value = image2.FileName.Replace(' ', '_');
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.ExecuteNonQuery();
+                    }
+                        
+                    if (image3.HasFile)
+                    {
+                        image3.PostedFile.SaveAs(path + image3.FileName.Replace(' ', '_'));
+                        cmd = new SqlCommand("spAddRemoveImages", con);
+                        cmd.Parameters.Add("@imageId", SqlDbType.Int).Value = 0;
+                        cmd.Parameters.Add("@listingId", SqlDbType.Int).Value = returnvalue;
+                        cmd.Parameters.Add("@imageName", SqlDbType.VarChar, 50).Value = image3.FileName.Replace(' ', '_');
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.ExecuteNonQuery();
+                    }
+                        
+                    if (image4.HasFile)
+                    {
+                        image4.PostedFile.SaveAs(path + image4.FileName.Replace(' ', '_'));
+                        cmd = new SqlCommand("spAddRemoveImages", con);
+                        cmd.Parameters.Add("@imageId", SqlDbType.Int).Value = 0;
+                        cmd.Parameters.Add("@listingId", SqlDbType.Int).Value = returnvalue;
+                        cmd.Parameters.Add("@imageName", SqlDbType.VarChar, 50).Value = image4.FileName.Replace(' ', '_');
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.ExecuteNonQuery();
+                    }
+                        
+                    if (image5.HasFile)
+                    {
+                        image5.PostedFile.SaveAs(path + image5.FileName.Replace(' ', '_'));
+                        cmd = new SqlCommand("spAddRemoveImages", con);
+                        cmd.Parameters.Add("@imageId", SqlDbType.Int).Value = 0;
+                        cmd.Parameters.Add("@listingId", SqlDbType.Int).Value = returnvalue;
+                        cmd.Parameters.Add("@imageName", SqlDbType.VarChar, 50).Value = image5.FileName.Replace(' ', '_');
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.ExecuteNonQuery();
+                    }
+                        
+                    
                     //located at the "path" string and then add them to Images table in database using spAddRemoveImages
 
                     Response.Redirect(Request.RawUrl);
