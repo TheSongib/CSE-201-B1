@@ -80,27 +80,26 @@ namespace OnlineClothingStore
                     if (imgReader.Read())
                     {
                         string path = "Content\\Images\\" + imgReader[0] + "\\" + imgReader[1] + "\\" + imgReader[2];
-                        System.Diagnostics.Debug.WriteLine("<img src=" + '"' + path + '"' + "style=" + '"' + "width: 19 %" + '"' + "/>");
                         img1.Text += "<img src=" + '"' + path + '"' + "style=" + '"' + "width: 19%;margin-right:2px;" + '"' + "/>";
                     }
                     if (imgReader.Read())
                     {
-                        string path = Server.MapPath("\\Content\\Images\\") + imgReader[0] + "\\" + imgReader[1] + "\\" + imgReader[2];
+                        string path = "Content\\Images\\" + imgReader[0] + "\\" + imgReader[1] + "\\" + imgReader[2];
                         img2.Text += "<img src=" + '"' + path + '"' + "style=" + '"' + "width: 19%;margin-right:2px;" + '"' + "/>";
                     }
                     if (imgReader.Read())
                     {
-                        string path = Server.MapPath("\\Content\\Images\\") + imgReader[0] + "\\" + imgReader[1] + "\\" + imgReader[2];
+                        string path = "Content\\Images\\" + imgReader[0] + "\\" + imgReader[1] + "\\" + imgReader[2];
                         img3.Text += "<img src=" + '"' + path + '"' + "style=" + '"' + "width: 19%;margin-right:2px;" + '"' + "/>";
                     }
                     if (imgReader.Read())
                     {
-                        string path = Server.MapPath("\\Content\\Images\\") + imgReader[0] + "\\" + imgReader[1] + "\\" + imgReader[2];
+                        string path = "Content\\Images\\" + imgReader[0] + "\\" + imgReader[1] + "\\" + imgReader[2];
                         img4.Text += "<img src=" + '"' + path + '"' + "style=" + '"' + "width: 19%;margin-right:2px;" + '"' + "/>";
                     }
                     if (imgReader.Read())
                     {
-                        string path = Server.MapPath("\\Content\\Images\\") + imgReader[0] + "\\" + imgReader[1] + "\\" + imgReader[2];
+                        string path = "Content\\Images\\" + imgReader[0] + "\\" + imgReader[1] + "\\" + imgReader[2];
                         img5.Text += "<img src=" + '"' + path + '"' + "style=" + '"' + "width: 19%;" + '"' + "/>";
                     }
                 }
