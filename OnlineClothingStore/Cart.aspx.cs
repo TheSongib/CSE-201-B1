@@ -36,6 +36,7 @@ namespace OnlineClothingStore
             //Create connection to stored procedure for listings and execute
             con = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection"].ConnectionString);
             cmd = new SqlCommand("spGetCart", con);
+            cmd.Parameters.Add("@userId", SqlDbType.VarChar).Value = Session["userId"];
             cmd.CommandType = CommandType.StoredProcedure;
             con.Open();
 
