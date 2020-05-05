@@ -43,7 +43,8 @@
         <div class="col-lg">
             <div class="form-group">
                 <label for="Price">Listing Price: </label>
-                <asp:TextBox id="Price" runat="server" class="form-control input-m" required="required"></asp:TextBox>
+                <asp:TextBox id="Price" runat="server" class="form-control input-m" type="number" required="required"></asp:TextBox>
+                <asp:RangeValidator id="RangeValidator" runat="server" Type="Integer" MinimumValue="0" MaximumValue="1000000" ControlToValidate="Price" ErrorMessage="Price must be a whole number that is 0 or more"/>
             </div>
         </div>
     </div>

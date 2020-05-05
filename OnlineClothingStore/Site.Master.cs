@@ -30,6 +30,7 @@ namespace OnlineClothingStore
             {
                 submissions.Visible = false;
                 cart.Visible = false;
+                wishlist.Visible = false;
                 account.InnerHtml = "Create Account/Login";
 
             }
@@ -38,6 +39,7 @@ namespace OnlineClothingStore
                 account.InnerHtml = (string) Session["firstName"];
                 account.HRef = "~/AccountInfo";
                 cart.Visible = true;
+                wishlist.Visible = true;
                 if ((bool)Session["admin"])
                 {
                     submissions.Visible = true;

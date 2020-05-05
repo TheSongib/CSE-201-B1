@@ -36,7 +36,7 @@
         <asp:TextBox id="promote" runat="server" class="form-control input-m" required="required"></asp:TextBox>
         <br />
         <div class="form-group">
-            <asp:Button id="loginSubmit" Text="Login" runat="server" OnClick="Promote_Click" class="btn btn-primary btn-lg" style="margin-left:50px"></asp:Button>
+            <asp:Button id="promoteSubmit" Text="Promote" runat="server" OnClick="Promote_Click" class="btn btn-primary btn-lg" style="margin-left:50px"></asp:Button>
         </div>
         <asp:Label ID="passOrFail" runat="server" class="font-weight-bold" />
     </div>

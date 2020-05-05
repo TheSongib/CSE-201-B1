@@ -28,7 +28,7 @@
                 <div class="form-group">
                     <label for="email">Email address</label>
                     <br />
-                    <asp:TextBox id="email" runat="server" class="form-control input-m"></asp:TextBox>
+                    <asp:TextBox id="email" runat="server" class="form-control input-m" TextMode="Email"></asp:TextBox>
                 </div>
             </div>
         </div>

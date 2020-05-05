@@ -105,6 +105,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Wishlist.aspx" />
     <Content Include="Cart.aspx" />
     <Content Include="Submissions.aspx" />
     <Content Include="App_Data\Store.mdf" />
@@ -169,6 +170,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Wishlist.aspx.cs">
+      <DependentUpon>Wishlist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Wishlist.aspx.designer.cs">
+      <DependentUpon>Wishlist.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Cart.aspx.cs">
       <DependentUpon>Cart.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

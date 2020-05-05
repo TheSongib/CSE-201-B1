@@ -46,7 +46,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">Clothing Store</a>
+                    <a class="navbar-brand" runat="server" href="~/">Store</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
@@ -56,6 +56,7 @@
                         <li><a id="submissions" runat="server">Submissions</a></li>
                     </ul>
                     <ul class="nav navbar-nav" style="float:right;">
+                        <li><a id="wishlist" runat="server" href="~/Wishlist">Wishlist</a></li>
                         <li><a id="cart" runat="server" href="~/Cart">Cart</a></li>
                         <li><a id="account" runat="server" href="~/CreateAccount"></a></li>
                     </ul>

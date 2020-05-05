@@ -57,23 +57,23 @@ namespace OnlineClothingStore
                     int listingId;
                     string title;
                     string author;
-                    double price;
+                    int price;
                     string category;
-                    string description;
+                    string description = "";
 
                     //These are the filepaths to set as the image source(s) whe displaying images
                     // also note that they may have up to 5, but possibly less.
-                    string img1Src;
-                    string img2Src;
-                    string img3Src;
-                    string img4Src;
-                    string img5Src;
+                    string img1Src = "";
+                    string img2Src = "";
+                    string img3Src = "";
+                    string img4Src = "";
+                    string img5Src = "";
 
                     //input listing data into variables
                     listingId = (int)reader[0];
-                    title = (string)reader[1];
+                    title = reader[1].ToString();
                     author = (string)reader[2] + " " + reader[3];
-                    price = (double)reader[4];
+                    price = (int)reader[4];
                     category = (string)reader[5];
 
                     //if there is a description present, put it here
@@ -112,26 +112,42 @@ namespace OnlineClothingStore
                         }
                     }
                     imgReader.Close();
-                    
 
-                    /**
-                     * 
-                     * Put code here to display this listing in the cart
-                     * 
-                     * this will repeat until all listings in the user's cart have
-                     * been displayed
-                     *
-                     */
+                    //Create objects to add to html
+                    LiteralControl beginningHtml = new LiteralControl();
+                    LiteralControl endHtml = new LiteralControl();
+                    Button remove = new Button();
+                    remove.ID = listingId.ToString();
+                    remove.Text = "Remove";
+                    remove.Attributes.Add("class", "btn btn-primary btn-sm");
+                    remove.Style.Add("float", "right");
+                    remove.Attributes.Add("runat", "server");
+                    remove.Click += new EventHandler(this.Remove_Click);
 
+                    //make html
+                    beginningHtml.Text += "<div class='jumbotron'>";
+                    beginningHtml.Text += "<div style='display:block;'>";
+                    if (img1Src != "") {
+                        beginningHtml.Text += "<img src=" + '"' + img1Src + '"' + "style=" + '"' + "width: 19%;margin-right:2px;" + '"' + "/><br>";
+                    }
+                    beginningHtml.Text += "<h3 style='display:inline-block'>" + title + "</h3>";
+                    beginningHtml.Text +=  "<h4 style = 'display:inline-block; float:right;padding-top:20px;' > Price: " + price + "</h4>";
+                    beginningHtml.Text += "</div>";
+                    beginningHtml.Text += "<div>";
+                    beginningHtml.Text += "<h6>" + description + "</h6>";
 
-
+                    //add button and ending html
+                    cart.Controls.Add(beginningHtml);
+                    cart.Controls.Add(remove);
+                    endHtml.Text = "</div></div>";
+                    cart.Controls.Add(endHtml);
 
                     //While loops repeats until all listings in cart have been displayed
                 }
 
                 reader.Close();
 
-                
+
             }
             else
             {
@@ -141,5 +157,16 @@ namespace OnlineClothingStore
             }
         }
 
+        protected void Remove_Click(object sender, EventArgs e)
+        {
+            con = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection"].ConnectionString);
+            cmd = new SqlCommand("spAddRemoveCart", con);
+            cmd.Parameters.Add("@userId", SqlDbType.VarChar).Value = Session["userId"];
+            cmd.Parameters.Add("@listingId", SqlDbType.VarChar).Value = (sender as Button).ID;
+            cmd.CommandType = CommandType.StoredProcedure;
+            con.Open();
+            cmd.ExecuteNonQuery();
+            Response.Redirect(Request.RawUrl);
+        }
     }
 }

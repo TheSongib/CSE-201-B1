@@ -60,13 +60,13 @@ namespace OnlineClothingStore
         protected global::System.Web.UI.WebControls.TextBox promote;
 
         /// <summary>
-        /// loginSubmit control.
+        /// promoteSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button loginSubmit;
+        protected global::System.Web.UI.WebControls.Button promoteSubmit;
 
         /// <summary>
         /// passOrFail control.
