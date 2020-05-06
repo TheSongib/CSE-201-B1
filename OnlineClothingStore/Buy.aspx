@@ -3,4 +3,11 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %></h2>
     <h3>Buy your items below:</h3>
+    <div class="row" style="display:inline-block">
+
+    </div>
+    <div id="content" runat="server">
+
+
+    </div>
 </asp:Content>
