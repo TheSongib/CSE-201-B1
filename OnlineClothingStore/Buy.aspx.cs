@@ -105,27 +105,36 @@ namespace OnlineClothingStore
                 LiteralControl endHtml = new LiteralControl();
                 Button remove = new Button();
                 remove.ID = listingId.ToString();
-                remove.Text = "Remove";
+                remove.Text = "Add to Cart";
                 remove.Attributes.Add("class", "btn btn-primary btn-sm");
-                remove.Style.Add("float", "right");
                 remove.Attributes.Add("runat", "server");
                 remove.Click += new EventHandler(this.Cart_Add);
 
+                //shorten title if need be
+                if(title.Length > 11)
+                {
+                    title = title.Substring(0,9) + "...";
+                }
+
                 //make html
-                beginningHtml.Text += "<div class='jumbotron' style='float:left;width:19%;margin-right:5px;>";
+                beginningHtml.Text += "<div class='jumbotron' style='float:left;width:19%;margin-right:5px;'>";
                 beginningHtml.Text += "<div style='display:block;'>";
                 if (img1Src != "")
                 {
-                    beginningHtml.Text += "<img src=" + '"' + img1Src + '"' + "style=" + '"' + "width: 19%;" + '"' + "/><br>";
+                    beginningHtml.Text += "<img src=" + '"' + img1Src + '"' + "style=" + '"' + "height:50px;" + '"' + "/><br>";
+                }
+                else
+                {
+                    beginningHtml.Text += "<img src='Content\\Images\\deafult.png' style=" + '"' + "height:50px;" + '"' + "/><br>";
                 }
                 beginningHtml.Text += "<h3>" + title + "</h3>";
                 beginningHtml.Text += "<h4 style='padding-top:20px;'> Price: " + price + "</h4>";
-                beginningHtml.Text += "<h6>" + description + "</h6>";
-                beginningHtml.Text += "</div>";
+
+                
                 //add button and ending html
                 content.Controls.Add(beginningHtml);
-                //content.Controls.Add(remove);
-                endHtml.Text = "</div>";
+                content.Controls.Add(remove);
+                endHtml.Text = "</div></div>";
                 content.Controls.Add(endHtml);
 
                 //While loops repeats until all listings in cart have been displayed

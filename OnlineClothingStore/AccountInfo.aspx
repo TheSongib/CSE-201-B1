@@ -27,13 +27,18 @@
                 <p id ="addressInfo" contenteditable="true" runat="server"></p>
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg">
+                <asp:Button id="logout" Text="Logout" runat="server" OnClick="Logout_Click" class="btn btn-primary btn-lg" style="margin-left:50px"></asp:Button>
+            </div>
+        </div>
     </div>
 
     <div id ="adminStuff" style="width:50%;float:right;" runat="server">
         <h3>Promote to Admin</h3>
         <label for="email">Enter email address of to-be admin: </label>
         <br />
-        <asp:TextBox id="promote" runat="server" class="form-control input-m" required="required"></asp:TextBox>
+        <asp:TextBox id="promote" runat="server" class="form-control input-m"></asp:TextBox>
         <br />
         <div class="form-group">
             <asp:Button id="promoteSubmit" Text="Promote" runat="server" OnClick="Promote_Click" class="btn btn-primary btn-lg" style="margin-left:50px"></asp:Button>

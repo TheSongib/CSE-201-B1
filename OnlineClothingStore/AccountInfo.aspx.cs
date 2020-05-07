@@ -48,6 +48,11 @@ namespace OnlineClothingStore
 
         protected void Promote_Click(object sender, EventArgs e)
         {
+            if(promote.Text == "")
+            {
+                passOrFail.Text = "Invalid input";
+            }
+
             //Establish connection to stored procedure and add parameteres
             con = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection"].ConnectionString);
             cmd = new SqlCommand("spPromoteToAdmin", con);
@@ -70,6 +75,16 @@ namespace OnlineClothingStore
             {
                 passOrFail.Text = "Failed: Either user does not exist or is already admin!";
             }
+        }
+        protected void Logout_Click(object sender, EventArgs e)
+        {
+            Session["userId"] = null;
+            Session["email"] = null;
+            Session["firstName"] = null;
+            Session["lastName"] = null;
+            Session["Address"] = null;
+            Session["admin"] = null;
+            Response.Redirect("Default.aspx");
         }
     }
 
